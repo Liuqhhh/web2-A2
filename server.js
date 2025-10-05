@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
     });
 });
 
-// 1. Home page data - Get all active, future events
+// 1. Home page data - Get all events (past and future)
 app.get('/api/events/home', async (req, res) => {
     try {
         console.log('📝 Fetching home page event data...');
@@ -34,8 +34,7 @@ app.get('/api/events/home', async (req, res) => {
             `SELECT e.*, c.name as category_name 
              FROM events e 
              JOIN categories c ON e.category_id = c.id 
-             WHERE e.date >= NOW() AND e.is_active = TRUE 
-             ORDER BY e.date ASC`
+             ORDER BY e.date DESC`  
         );
         console.log(`✅ Found ${rows.length} events`);
         res.json({
@@ -79,7 +78,7 @@ app.get('/api/events/search', async (req, res) => {
             SELECT e.*, c.name as category_name 
             FROM events e 
             JOIN categories c ON e.category_id = c.id 
-            WHERE e.is_active = TRUE
+            WHERE e.date >= NOW()  // ← 修改这里
         `;
         let params = [];
 

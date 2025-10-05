@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     categorySelect.innerHTML = '<option value="">Loading categories...</option>';
     
     try {
-        // Load categories - 修复API路径
         const categoriesResponse = await fetch('/api/categories');
         const categoriesData = await categoriesResponse.json();
         
@@ -81,7 +80,7 @@ async function performSearch() {
     `;
     
     try {
-        // 修复API路径
+
         const response = await fetch(`/api/events/search?${queryString}`);
         const responseData = await response.json();
         
@@ -165,7 +164,7 @@ function createEventCard(event) {
     `;
 }
 
-// 添加缺失的工具函数
+
 function formatDate(dateString) {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {

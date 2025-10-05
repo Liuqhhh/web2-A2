@@ -4,26 +4,26 @@ const mysql = require('mysql2');
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'Lqh040413'  // 使用你的MySQL密码
+    password: 'Lqh040413'  
 });
 
 async function initializeDatabase() {
     try {
         console.log('🚀 Starting database initialization...');
         
-        // Create database
+
         await connection.promise().query('CREATE DATABASE IF NOT EXISTS charityevents_db');
         console.log('✅ Database created successfully');
         
-        // Use database
+
         await connection.promise().query('USE charityevents_db');
         
-        // 首先删除已存在的表（如果表结构有问题）
+
         await connection.promise().query('DROP TABLE IF EXISTS events');
         await connection.promise().query('DROP TABLE IF EXISTS categories');
         console.log('✅ Cleaned existing tables');
         
-        // Create categories table
+
         await connection.promise().query(`
             CREATE TABLE IF NOT EXISTS categories (
                 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -33,7 +33,7 @@ async function initializeDatabase() {
         `);
         console.log('✅ Categories table created');
         
-        // Create events table - 确保包含所有需要的列
+ 
         await connection.promise().query(`
             CREATE TABLE IF NOT EXISTS events (
                 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -54,7 +54,7 @@ async function initializeDatabase() {
         `);
         console.log('✅ Events table created');
         
-        // Insert categories
+
         await connection.promise().query(`
             INSERT IGNORE INTO categories (id, name) VALUES 
             (1, 'Fun Run'),
@@ -66,7 +66,7 @@ async function initializeDatabase() {
         `);
         console.log('✅ Categories inserted');
         
-        // Insert sample events - 简化数据，先确保能插入成功
+
         await connection.promise().query(`
             INSERT IGNORE INTO events (name, description, full_description, date, location, purpose, ticket_price, goal_amount, progress_amount, category_id, is_active) VALUES
             ('City Marathon 2024', 'Annual city marathon for heart disease research', 'Join us for the annual City Marathon 2024! This event brings together runners of all levels to support heart disease research.', '2024-12-15 08:00:00', 'Central Park', 'Raise funds for Heart Foundation', 50.00, 50000.00, 32500.00, 1, TRUE),
@@ -91,7 +91,7 @@ async function initializeDatabase() {
     }
 }
 
-// Only run if this file is executed directly
+
 if (require.main === module) {
     initializeDatabase();
 }
