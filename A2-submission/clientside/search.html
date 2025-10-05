@@ -61,7 +61,7 @@
     </main>
 
     <script>
-
+        // 加载分类数据
         async function loadCategories() {
             try {
                 const response = await fetch('/api/categories');
@@ -77,7 +77,7 @@
             }
         }
 
-
+        // 搜索事件
         async function searchEvents(filters = {}) {
             try {
                 const params = new URLSearchParams();
@@ -127,6 +127,7 @@
             }
         }
 
+        // 事件监听
         document.addEventListener('DOMContentLoaded', function() {
             loadCategories();
             
