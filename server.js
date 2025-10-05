@@ -78,7 +78,7 @@ app.get('/api/events/search', async (req, res) => {
             SELECT e.*, c.name as category_name 
             FROM events e 
             JOIN categories c ON e.category_id = c.id 
-            WHERE e.date >= NOW()  // ← 修改这里
+            WHERE e.date >= NOW()  
         `;
         let params = [];
 
