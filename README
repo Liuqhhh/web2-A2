@@ -1,0 +1,19 @@
+# Charity Events Management System
+
+PROG2002 Assignment 2
+
+A dynamic web application for managing and discovering charity events in your city.
+
+Features
+- Home Page: Display organization info and upcoming events
+- Search Page: Filter events by category, location, and date
+- Event Details: Comprehensive event information with fundraising progress
+- Responsive Design: Works on desktop and mobile devices
+
+Technology Stack
+- Frontend: HTML, CSS, JavaScript
+- Backend: Node.js, Express.js
+- Database: MySQL
+- APIs: RESTful endpoints for data retrieval
+
+Project Structure
